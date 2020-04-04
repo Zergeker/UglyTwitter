@@ -1,4 +1,4 @@
-package com.project.uglyTwitter;
+package com.example.UglyTwitter.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
