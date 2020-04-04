@@ -1,18 +1,43 @@
-package com.example.UglyTwitter.model;
+package com.project.uglyTwitter;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import java.util.UUID;
-
+@Entity
 public class Post {
-    public UUID id;
-    public String title;
-    public String content;
 
-    public Post (@JsonProperty("title") String title,
-                 @JsonProperty("content") String content){
-        this.id = UUID.randomUUID();
-        this.title = title;
-        this.content = content;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+    private String title;
+    private String text_content;
+    private Long author_id;
+
+    protected Post() {}
+
+    public Post(String firstName, String lastName) {
+        this.title = firstName;
+        this.text_content = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Customer[id=%d, title='%s', text_content='%s']",
+                id, title, text_content);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getText_content() {
+        return text_content;
     }
 }
