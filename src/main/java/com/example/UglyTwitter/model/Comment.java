@@ -1,34 +1,32 @@
 package com.example.UglyTwitter.model;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "commentaries")
 public class Comment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "COMMENT_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "commentary_id")
     private Long id;
 
-    @Column(name = "CONTENT")
+    @Column(name = "commentary_content")
     private String content;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "AUTHOR_ID")
-    private Long author_id;
+    @JoinColumn(name = "author_id")
+    private User author_id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "POST_ID")
-    private Long post_id;
+    @JoinColumn(name = "post_id")
+    private Post post_id;
 
     protected Comment() {
         super();
     }
 
-    public Comment(String content, Long author_id, Long post_id) {
+    public Comment(String content, User author_id, Post post_id) {
         super();
         this.content = content;
         this.author_id = author_id;
@@ -46,11 +44,11 @@ public class Comment {
         return id;
     }
 
-    public Long getAuthor_id() {
+    public User getAuthor_id() {
         return author_id;
     }
 
-    public Long getPost_id() {
+    public Post getPost_id() {
         return post_id;
     }
 
@@ -67,11 +65,11 @@ public class Comment {
         this.content = content;
     }
 
-    public void setAuthor_id(Long author_id) {
+    public void setAuthor_id(User author_id) {
         this.author_id = author_id;
     }
 
-    public void setPost_id(Long post_id) {
+    public void setPost_id(Post post_id) {
         this.post_id = post_id;
     }
 }

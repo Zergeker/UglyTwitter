@@ -4,33 +4,33 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "post")
+@Table(name = "POST")
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "POST_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "post_id")
     private Long id;
 
-    @Column(name = "POST_TITLE")
+    @Column(name = "post_title")
     private String title;
 
-    @Column(name = "POST_CONTENT")
+    @Column(name = "post_content")
     private String text_content;
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "AUTHOR_ID")
-    private Long author_id;
+    @JoinColumn(name = "author_id")
+    private User author_id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post_id", cascade = CascadeType.ALL)
     private Set<Comment> postComment;
 
     public Post() {
         super();
     }
 
-    public Post(String firstName, String lastName, Long author_id, Set<Comment> postComment) {
+    public Post(String firstName, String lastName, User author_id, Set<Comment> postComment) {
         super();
         this.title = firstName;
         this.text_content = lastName;
@@ -57,7 +57,7 @@ public class Post {
         return text_content;
     }
 
-    public Long getAuthor_id() {
+    public User getAuthor_id() {
         return author_id;
     }
 
@@ -77,7 +77,7 @@ public class Post {
         this.text_content = text_content;
     }
 
-    public void setAuthor_id(Long author_id) {
+    public void setAuthor_id(User author_id) {
         this.author_id = author_id;
     }
 

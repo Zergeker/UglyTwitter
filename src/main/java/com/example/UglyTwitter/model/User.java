@@ -1,41 +1,44 @@
 package com.example.UglyTwitter.model;
 
+import org.slf4j.LoggerFactory;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "User_Id")
+    private Integer id;
 
-    @Column(name = "USER_NAME")
+    @Column(name = "User_Name")
     private String userName;
 
-    @Column(name = "USER_PASSWORD")
+    @Column(name = "User_Password")
     private String password;
     @Transient
     private String passwordConfirm;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author_id", cascade = CascadeType.ALL)
     private Set<Post> userPost;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author_id", cascade = CascadeType.ALL)
     private Set<Comment> userComment;
 
-    protected User() {
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Role> roles;
+
+    public User() {
         super();
     }
 
-    public User(String firstName, String lastName, Set<Post> userPost, Set<Comment> userComment) {
+    public User(String firstName, String lastName) {
         super();
         this.userName = firstName;
         this.password = lastName;
-        this.userPost = userPost;
-        this.userComment = userComment;
     }
 
     @Override
@@ -45,7 +48,7 @@ public class User {
                 id, userName, password);
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -66,16 +69,24 @@ public class User {
         return userComment;
     }
 
-    public void setID() {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setUserName() {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public void setPassword() {
+    public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public void setUserPost(Set<Post> userPost) {

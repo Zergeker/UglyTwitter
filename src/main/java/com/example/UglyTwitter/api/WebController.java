@@ -1,4 +1,4 @@
-package com.example.UglyTwitter.api;
+/*package com.example.UglyTwitter.api;
 
 import com.example.UglyTwitter.model.*;
 import com.example.UglyTwitter.repo.UserRepo;
@@ -50,3 +50,4 @@ public class WebController {
         System.out.println("Hello");
     }
 }
+*/
