@@ -4,70 +4,87 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "USER")
 public class User {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USER_ID")
     private Long id;
-    private String nickname;
+
+    @Column(name = "USER_NAME")
+    private String userName;
+
+    @Column(name = "USER_PASSWORD")
     private String password;
     @Transient
     private String passwordConfirm;
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Post> userPost;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Comment> userComment;
+
+    protected User() {
+        super();
     }
 
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
-    @ManyToMany
-    private Set<Role> roles;
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public User() {}
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public User(String firstName, String lastName) {
-        this.nickname = firstName;
+    public User(String firstName, String lastName, Set<Post> userPost, Set<Comment> userComment) {
+        super();
+        this.userName = firstName;
         this.password = lastName;
+        this.userPost = userPost;
+        this.userComment = userComment;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Customer[id=%d, nickname='%s', password='%s']",
-                id, nickname, password);
+                "User[id=%d, userName='%s', password='%s']",
+                id, userName, password);
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getNickname() {
-        return nickname;
+
+    public String getUserName() {
+        return userName;
     }
 
     public String getPassword() {
         return password;
     }
+
+    public Set<Post> getUserPost() {
+        return userPost;
+    }
+
+    public Set<Comment> getUserComment() {
+        return userComment;
+    }
+
+    public void setID() {
+        this.id = id;
+    }
+
+    public void setUserName() {
+        this.userName = userName;
+    }
+
+    public void setPassword() {
+        this.password = password;
+    }
+
+    public void setUserPost(Set<Post> userPost) {
+        this.userPost = userPost;
+    }
+
+    public void setUserComment(Set<Comment> userComment) {
+        this.userComment = userComment;
+    }
+
+
 }
