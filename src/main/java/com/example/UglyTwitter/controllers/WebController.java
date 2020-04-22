@@ -1,4 +1,4 @@
-package com.example.UglyTwitter.api;
+/*package com.example.UglyTwitter.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +11,8 @@ public class WebController {
     public ModelAndView getToLoginPage (){
         ModelAndView result = new ModelAndView();
         result.addObject("title", "Hello");
-        result.setViewName("login.mustache");
+        result.setViewName("login.html");
         return result;
     }
 }
+*/

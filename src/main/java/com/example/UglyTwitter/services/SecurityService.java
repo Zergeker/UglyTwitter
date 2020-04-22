@@ -1,4 +1,8 @@
-package com.example.UglyTwitter.services;
+/*package com.example.UglyTwitter.services;
 
-public class SecurityService {
+public interface SecurityService {
+    String findLoggedInUsername();
+
+    void autoLogin (String nickname, String password);
 }
+*/
