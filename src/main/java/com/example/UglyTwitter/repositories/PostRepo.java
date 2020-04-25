@@ -7,5 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepo extends JpaRepository<Post, Long> {
 
-    Post findById(long id);
+    Post findByUserId(long userId);
+
+    Post findByPostId(long id);
+
 }

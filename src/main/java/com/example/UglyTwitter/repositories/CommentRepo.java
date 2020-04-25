@@ -7,5 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CommentRepo extends JpaRepository<Comment, Long> {
 
-    Comment findById(long id);
+    Comment findByCommentId(long commentId);
+
+    Comment findByUserId(long userId);
 }
