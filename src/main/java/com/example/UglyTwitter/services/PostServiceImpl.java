@@ -5,6 +5,8 @@ import com.example.UglyTwitter.repositories.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PostServiceImpl implements PostService {
 
@@ -27,7 +29,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post findByPostId(Long postId) {
-        return postRepo.findByPostId(postId);
+    public Optional<Post> findByPostId(Long postId) {
+        return postRepo.findById(postId);
     }
 }

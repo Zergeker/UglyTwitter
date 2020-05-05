@@ -5,6 +5,8 @@ import com.example.UglyTwitter.repositories.CommentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CommentServiceImpl implements CommentService {
     @Autowired
@@ -21,8 +23,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment findByCommentId(Long commentId) {
-        return commentRepo.findByCommentId(commentId);
+    public Optional<Comment> findByCommentId(Long commentId) {
+        return commentRepo.findById(commentId);
     }
 
     @Override

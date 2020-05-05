@@ -2,6 +2,8 @@ package com.example.UglyTwitter.services;
 
 import com.example.UglyTwitter.model.Comment;
 
+import java.util.Optional;
+
 public interface CommentService {
     void save(Comment comment);
 
@@ -9,5 +11,5 @@ public interface CommentService {
 
     Comment findByUserId(Long userId);
 
-    Comment findByCommentId(Long commentId);
+    Optional<Comment> findByCommentId(Long commentId);
 }
