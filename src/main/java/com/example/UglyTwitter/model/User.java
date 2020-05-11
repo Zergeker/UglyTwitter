@@ -1,7 +1,5 @@
 package com.example.UglyTwitter.model;
 
-import org.slf4j.LoggerFactory;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "User_Id")
-    private Integer id;
+    private Long userId;
 
     @Column(name = "User_Name")
     private String userName;
@@ -45,11 +43,11 @@ public class User {
     public String toString() {
         return String.format(
                 "User[id=%d, userName='%s', password='%s']",
-                id, userName, password);
+                userId, userName, password);
     }
 
-    public Integer getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
 
@@ -69,8 +67,8 @@ public class User {
         return userComment;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Long id) {
+        this.userId = id;
     }
 
     public void setUserName(String userName) {

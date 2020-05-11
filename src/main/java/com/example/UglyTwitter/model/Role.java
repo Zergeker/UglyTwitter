@@ -1,7 +1,6 @@
 package com.example.UglyTwitter.model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name="roles")
@@ -9,7 +8,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private Long Id;
+    private Long roleId;
 
     @Column(name = "role_name")
     private String name;
@@ -18,8 +17,8 @@ public class Role {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Long getId() {
-        return Id;
+    public Long getRoleId() {
+        return roleId;
     }
 
     public String getName() {
@@ -38,7 +37,7 @@ public class Role {
         this.user = user;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setRoleId(Long role_id) {
+        this.roleId = role_id;
     }
 }

@@ -10,7 +10,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
-    private Long id;
+    private Long postId;
 
     @Column(name = "post_title")
     private String title;
@@ -42,11 +42,11 @@ public class Post {
     public String toString() {
         return String.format(
                 "Post[id=%d, title='%s', text_content='%s']",
-                id, title, text_content);
+                postId, title, text_content);
     }
 
-    public Long getId() {
-        return id;
+    public Long getPostId() {
+        return postId;
     }
 
     public String getTitle() {
@@ -65,8 +65,8 @@ public class Post {
         return postComment;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPostId(Long id) {
+        this.postId = id;
     }
 
     public void setTitle(String title) {
