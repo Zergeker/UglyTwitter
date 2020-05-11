@@ -7,6 +7,8 @@ import com.example.UglyTwitter.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @Service
 public class CommentServiceImpl implements CommentService {
     @Autowired
@@ -28,6 +30,9 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void deleteCommentsByPostId(Long id) {commentRepository.deleteCommentsByPostId(id);}
+
+    @Override
+    public Set<Comment> getCommentsByPostId(Long id) {return commentRepository.getCommentByPostId(id);}
 
     @Override
     public Comment FindById (Long id){

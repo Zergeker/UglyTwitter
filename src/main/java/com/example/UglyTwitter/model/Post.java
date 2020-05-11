@@ -23,19 +23,15 @@ public class Post {
     @JoinColumn(name = "author_id")
     private Long author_id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post_id", cascade = CascadeType.ALL)
-    private Set<Comment> postComment;
-
     public Post() {
         super();
     }
 
-    public Post(String firstName, String lastName, Long author_id, Set<Comment> postComment) {
+    public Post(String firstName, String lastName, Long author_id) {
         super();
         this.title = firstName;
         this.text_content = lastName;
         this.author_id = author_id;
-        this.postComment = postComment;
     }
 
     @Override
@@ -61,10 +57,6 @@ public class Post {
         return author_id;
     }
 
-    public Set<Comment> getPostComment() {
-        return postComment;
-    }
-
     public void setPostId(Long id) {
         this.postId = id;
     }
@@ -79,9 +71,5 @@ public class Post {
 
     public void setAuthor_id(Long author_id) {
         this.author_id = author_id;
-    }
-
-    public void setPostComment(Set<Comment> postComment) {
-        this.postComment = postComment;
     }
 }

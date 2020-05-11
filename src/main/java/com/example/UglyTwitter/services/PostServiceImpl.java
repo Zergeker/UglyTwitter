@@ -26,7 +26,4 @@ public class PostServiceImpl implements PostService {
     public Post FindById (Long id){
         return postRepository.findByPostId(id);
     }
-
-    @Override
-    public void deleteComments(Long id) { postRepository.deleteCommentsByPostId(id);}
 }

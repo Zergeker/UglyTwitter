@@ -9,7 +9,6 @@ import java.util.Optional;
 public interface PostService {
     void save(Post post);
     void delete(Long id);
-    void deleteComments(Long id);
 
     Post FindById(Long id);
 }

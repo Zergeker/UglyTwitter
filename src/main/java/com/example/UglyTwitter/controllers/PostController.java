@@ -32,14 +32,9 @@ public class PostController {
         return "Success!";
     }
 
-    @GetMapping("/getOnlyPost")
-    public String getOnlyPost(){
-        return postService.FindById(2L).getTitle() + postService.FindById(2L).getText_content() + postService.FindById(2L).getAuthor_id();
-    }
-
     @GetMapping("/getPost")
     public String getPost(){
-        return postService.FindById(2L).toString();
+        return postService.FindById(2L).toString() + commentRepository.getCommentByPostId(2L);
     }
 
     @GetMapping("/deletePost")
