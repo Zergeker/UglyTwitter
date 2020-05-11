@@ -6,8 +6,6 @@ import com.example.UglyTwitter.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class PostServiceImpl implements PostService {
     @Autowired
@@ -22,7 +20,13 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public void delete(Long id) { postRepository.deleteById(id);}
+
+    @Override
     public Post FindById (Long id){
         return postRepository.findByPostId(id);
     }
+
+    @Override
+    public void deleteComments(Long id) { postRepository.deleteCommentsByPostId(id);}
 }

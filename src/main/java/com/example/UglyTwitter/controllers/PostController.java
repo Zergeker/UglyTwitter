@@ -1,6 +1,7 @@
 package com.example.UglyTwitter.controllers;
 
 import com.example.UglyTwitter.model.Post;
+import com.example.UglyTwitter.repositories.CommentRepository;
 import com.example.UglyTwitter.repositories.UserRepository;
 import com.example.UglyTwitter.services.PostService;
 import javafx.geometry.Pos;
@@ -18,18 +19,33 @@ public class PostController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    CommentRepository commentRepository;
+
     @GetMapping("/addPost")
     public String addPost(){
         Post post = new Post();
         post.setTitle("New Title");
         post.setText_content("Hello world!");
-        post.setAuthor_id(userRepository.findByuserName("peplix"));
+        post.setAuthor_id(userRepository.findByuserName("peplix").getUserId());
         postService.save(post);
         return "Success!";
     }
 
+    @GetMapping("/getOnlyPost")
+    public String getOnlyPost(){
+        return postService.FindById(2L).getTitle() + postService.FindById(2L).getText_content() + postService.FindById(2L).getAuthor_id();
+    }
+
     @GetMapping("/getPost")
     public String getPost(){
-        return postService.FindById(Long.valueOf(2)).toString();
+        return postService.FindById(2L).toString();
+    }
+
+    @GetMapping("/deletePost")
+    public String deletePost(){
+        commentRepository.deleteCommentsByPostId(2L);
+        postService.delete(2L);
+        return "Post deleted!";
     }
 }

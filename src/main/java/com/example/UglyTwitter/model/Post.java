@@ -21,7 +21,7 @@ public class Post {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
-    private User author_id;
+    private Long author_id;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "post_id", cascade = CascadeType.ALL)
     private Set<Comment> postComment;
@@ -30,7 +30,7 @@ public class Post {
         super();
     }
 
-    public Post(String firstName, String lastName, User author_id, Set<Comment> postComment) {
+    public Post(String firstName, String lastName, Long author_id, Set<Comment> postComment) {
         super();
         this.title = firstName;
         this.text_content = lastName;
@@ -57,7 +57,7 @@ public class Post {
         return text_content;
     }
 
-    public User getAuthor_id() {
+    public Long getAuthor_id() {
         return author_id;
     }
 
@@ -77,7 +77,7 @@ public class Post {
         this.text_content = text_content;
     }
 
-    public void setAuthor_id(User author_id) {
+    public void setAuthor_id(Long author_id) {
         this.author_id = author_id;
     }
 

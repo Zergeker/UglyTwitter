@@ -1,12 +1,12 @@
 package com.example.UglyTwitter.repositories;
 
-import com.example.UglyTwitter.model.Post;
+import com.example.UglyTwitter.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
-    Post findByPostId(Long id);
+public interface CommentRepository extends JpaRepository<Comment, Long> {
+    Comment findByCommentId(Long id);
 
     void deleteCommentsByPostId(Long id);
 }
