@@ -1,11 +1,11 @@
 package com.example.UglyTwitter.repositories;
 
-import com.example.UglyTwitter.model.Comment;
+import com.example.UglyTwitter.model.Post;
 import com.example.UglyTwitter.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
-public interface CommentRepo extends JpaRepository<Comment, Long> {
+public interface PostRepository extends JpaRepository<Post, Long> {
 
-    Comment findById(long id);
+    Post findById(long id);
 }

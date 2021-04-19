@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
@@ -20,13 +20,13 @@ public class UserServiceImpl implements UserService{
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void save (User user){
+    public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
     @Override
-    public User findByUsername(String username){
+    public User findByUsername(String username) {
         return userRepository.findByUserName(username);
     }
 

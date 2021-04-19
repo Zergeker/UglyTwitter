@@ -10,12 +10,26 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @PostMapping("/creaeComment")
+    @PostMapping("/createComment")
     public RedirectView createComment(@ModelAttribute("createComment") Comment commentForm) {
 
         commentService.save(commentForm);
 
         return new RedirectView("");//Возвращает страницу поста, со всеми комментами
+    }
+
+    @PostMapping("/deleteComment")
+    public RedirectView deleteComment(@ModelAttribute("deleteComment") Comment commentForm){
+        commentService.deleteById(commentForm.getId());
+
+        return new RedirectView("");
+    }
+
+    @PostMapping("/updateComment")
+    public RedirectView updateComment(@ModelAttribute("deleteComment") Comment commentForm){
+        commentService.update(commentForm);
+
+        return new RedirectView("");
     }
 
 }
